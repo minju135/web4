@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+    <script src="https://code.jquery.com/jquery-4.0.0.js"></script>
+    <title>Document</title>
+    <style>
+        body, h1, h2, p {
+            margin: 0;
+        }
+        /* .con {
+            height: 140vh;
+            border: 1px solid #000;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+        }
+        #con-tr {
+            height: 30vh;
+        } */
+        header {
+            height: 30vh;
+        }
+        img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .con {
+            display: flex;
+            gap: 20px;
+        }
+        .item {
+            width: calc((100% - 60px) / 4);
+        }
+        .main {
+            padding:0 40px;
+        }
+        .main h1 {
+            margin-bottom: 20px;
+        }
+        .item .title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+        .item .sub-title {
+
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="wrap">
+        <header></header>
+        <div class="main">
+            <h1>Cras id odio</h1>
+            <div class="con">
+                <div class="item"></div>
+            </div>
+        </div>
+        <header></header>
+    </div>
+    <script>
+        /*
+        // to 원래 위치에서 해당 위치로 변경
+        gsap.to(".box",{x:200, duration:2},3)
+        // from 지정위치에서 현재 속성으로 이동
+        gsap.from(".box",{y:-100, duration:2, opacity:0},0)
+        // fromTo()
+        gsap.fromTo(".box",{y:-200, opacity:0},{duration:2, y:200,opacity:1})
+        // timeline() 여러 애니메이션을 시퀀스(단계별로) 관리
+         let tl = gsap.timeline();
+        tl.to(".box", {duration:1, x:200}).to(".box",{duration:2, rotation:360})
+        let tl = gsap.to(".box", {duration:3, x:200})
+        gsap.kill(tl); 
+        gsap.play(); // 재생
+        gsap.pause() // 정지
+        gsap.resume() // 재개
+        gsap.reverse() // 역재생
+        gsap.restart() // 다시시작
+       
+        const an = gsap.to(".box", {
+            duration: 10,
+            keyframes : [
+                {x:200},
+                {y:200},
+                {rotation: 180, scale : 1.5}
+            ],
+        });
+        an.pause();
+        let s = document.querySelector(".st");
+        let e = document.querySelector(".end");
+        s.addEventListener("click", function(){
+            an.play();
+        })
+        e.addEventListener("click", function(){
+            an.pause();
+        })
+        gsap.to(".box",{
+            scrollTrigger : {
+                trigger : ".box",
+                markers : true,
+                start : "top 60%",
+                end : "bottom 30%",
+                scrub : true,
+                pin : true, 
+            },
+            backgroundColor : "red"
+        }) */
+        const items = [
+            {
+                title : "1. nulla vel pretium hendrerit",
+                subtitle : "Praesent non luctus risus. Nunc sem tellus, fringilla id tincidunt at, accumsan ac purus. In ac mi est. Proin mattis sem vitae metus venenatis dictum.",
+                src : "dog.jpg",
+            },
+            {
+                title : "2. nulla vel pretium hendrerit",
+                subtitle : "Praesent non luctus risus. Nunc sem tellus, fringilla id tincidunt at, accumsan ac purus. In ac mi est. Proin mattis sem vitae metus venenatis dictum.",
+                src : "dog2.jpg",
+            },
+            {
+                title : "3. nulla vel pretium hendrerit",
+                subtitle : "Praesent non luctus risus. Nunc sem tellus, fringilla id tincidunt at, accumsan ac purus. In ac mi est. Proin mattis sem vitae metus venenatis dictum.",
+                src : "bag.jpg",
+            },
+            {
+                title : "4. nulla vel pretium hendrerit",
+                subtitle : "Praesent non luctus risus. Nunc sem tellus, fringilla id tincidunt at, accumsan ac purus. In ac mi est. Proin mattis sem vitae metus venenatis dictum.",
+                src : "cute.jpg",
+            },
+        ]
+        const abc = items.map(item=>{
+            return `
+                <div class="item">
+                    <img src = "${item.src}" alt = ${item.title}">
+                    <p class = "title">${item.title}</p>
+                    <p class = "subtitle">${item.subtitle}</p>
+                </div>
+            `
+        }).join("");
+        $(".main .con").html(abc)
+    </script>
+</body>
+</html>
